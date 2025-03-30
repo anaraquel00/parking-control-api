@@ -71,8 +71,8 @@ curl -X POST 'http://localhost:8080/parkingspot' \
     "placaCarro": "ABC1234",
     "horaChegada": "2025-03-30 09:55:00"
 }'
-🌟 Destaques Técnicos
-Arquitetura em Camadas: Controller → Service → Repository
+
+🌟 Destaques Técnicos Arquitetura em Camadas: Controller → Service → Repository
 
 DTO Pattern para desacoplamento de entidades
 
