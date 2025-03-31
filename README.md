@@ -82,6 +82,30 @@ Tratamento Global de Exceções
 
 Configuração de CORS
 
+## Diagramas da API
+
+### Fluxo de Criação de Registro
+```mermaid
+sequenceDiagram
+    participant Cliente
+    participant Controller
+    participant Service
+    participant Repository
+    participant BancoDados
+
+    Cliente->>Controller: POST /parkingspot (JSON)
+    Controller->>Service: Valida campos
+    Service->>Repository: Verifica placa existente
+    Repository->>BancoDados: SELECT placa_carro
+    BancoDados-->>Repository: Dados
+    Service->>Repository: Salva registro
+    Repository->>BancoDados: INSERT
+    BancoDados-->>Repository: ID gerado
+    Repository-->>Service: Entidade salva
+    Service-->>Controller: Resposta
+    Controller-->>Cliente: 201 Created + JSON
+```
+
 📌 Melhorias Futuras
 Implementar autenticação JWT
 
