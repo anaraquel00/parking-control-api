@@ -1,0 +1,20 @@
+@startuml Endpoints da API
+title Endpoints ParkingControl API
+
+[POST /parkingspot] as post
+[GET /parkingspot] as getAll
+[GET /parkingspot/{id}] as getById
+[PUT /parkingspot/{id}] as update
+[DELETE /parkingspot/{id}] as delete
+
+component "Database" {
+  [MySQL]
+}
+
+post --> MySQL : INSERT
+getAll --> MySQL : SELECT *
+getById --> MySQL : SELECT WHERE id=?
+update --> MySQL : UPDATE
+delete --> MySQL : DELETE
+
+@enduml

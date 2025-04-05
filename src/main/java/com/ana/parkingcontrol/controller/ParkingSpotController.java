@@ -1,5 +1,6 @@
 package com.ana.parkingcontrol.controller;
 
+
 import com.ana.parkingcontrol.exception.ResourceNotFoundException;
 import com.ana.parkingcontrol.model.ParkingSpot;
 import com.ana.parkingcontrol.repository.ParkingSpotRepository;
@@ -9,6 +10,7 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,6 +29,13 @@ public class ParkingSpotController {
 public List<ParkingSpot>getAllParkingSpots(){
         return service.findAll();
     }
+
+    @GetMapping("/form")
+    public String showForm(Model model) {
+        model.addAttribute("parkingSpot", new ParkingSpot());
+        return "parking-spot-form";
+    }
+
 
 @GetMapping("/{id}")
 public ResponseEntity<ParkingSpot> getParkingSpotById(@PathVariable Long id){

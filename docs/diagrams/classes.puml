@@ -1,0 +1,25 @@
+@startuml Classes da ParkingControl
+
+class ParkingSpot {
+    - id: Long
+    - placaCarro: String
+    - numVaga: String
+    - cpf: String
+    - email: String
+    - telefone: String
+    - horaChegada: LocalDateTime
+}
+
+class ParkingSpotController {
+    + createParkingSpot()
+    + getAllParkingSpots()
+    + getParkingSpotById()
+    + updateParkingSpot()
+    + deleteParkingSpot()
+}
+
+ParkingSpotController --> ParkingSpotService
+ParkingSpotService --> ParkingSpotRepository
+ParkingSpotRepository --> ParkingSpot
+
+@enduml

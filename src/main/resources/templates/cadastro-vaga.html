@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Vaga - Parking Control</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+<div class="container">
+    <h1>🅿️ Cadastrar Nova Vaga</h1>
+
+    <form th:action="@{/parking-spots}" method="post" th:object="${parkingSpot}">
+        <!-- Dados Pessoais -->
+        <fieldset>
+            <legend>Dados do Cliente</legend>
+
+            <div class="form-group">
+                <label for="nome">Nome Completo:</label>
+                <input type="text" id="nome" th:field="*{nome}" required>
+                <small class="error" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></small>
+            </div>
+
+            <div class="form-group">
+                <label for="cpf">CPF:</label>
+                <input type="text" id="cpf" th:field="*{cpf}" placeholder="000.000.000-00" required>
+                <small class="error" th:if="${#fields.hasErrors('cpf')}" th:errors="*{cpf}"></small>
+            </div>
+
+            <div class="form-group">
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" th:field="*{email}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="telefone">Telefone:</label>
+                <input type="tel" id="telefone" th:field="*{telefone}" placeholder="(XX) XXXXX-XXXX" required>
+            </div>
+        </fieldset>
+
+        <!-- Dados do Veículo -->
+        <fieldset>
+            <legend>Dados do Veículo</legend>
+
+            <div class="form-group">
+                <label for="placaCarro">Placa:</label>
+                <input type="text" id="placaCarro" th:field="*{placaCarro}"
+                       placeholder="AAA1A11 ou AAA1111" required>
+                <small class="error" th:if="${#fields.hasErrors('placaCarro')}"
+                       th:errors="*{placaCarro}"></small>
+            </div>
+
+            <div class="form-group">
+                <label for="numVaga">Número da Vaga:</label>
+                <input type="text" id="numVaga" th:field="*{numVaga}" required>
+            </div>
+        </fieldset>
+
+        <!-- Botão -->
+        <button type="submit">Cadastrar Vaga</button>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,23 @@
+@startuml Arquitetura do Sistema
+left to right direction
+
+node "Cliente (HTTP Client)" as cliente {
+  [Postman/Browser]
+}
+
+node "Backend" as backend {
+  [Controller Layer] as controller
+  [Service Layer] as service
+  [Repository Layer] as repository
+}
+
+database "MySQL" as mysql {
+  [parking_spot table]
+}
+
+cliente --> controller : HTTP Requests
+controller --> service : Chama métodos
+service --> repository : Executa operações
+repository --> mysql : JDBC
+
+@enduml

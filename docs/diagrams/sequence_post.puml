@@ -1,0 +1,19 @@
+@startuml Fluxo POST /parkingspot
+actor Cliente
+participant "ParkingSpotController" as controller
+participant "ParkingSpotService" as service
+participant "ParkingSpotRepository" as repository
+database "MySQL"
+
+Cliente -> controller: POST /parkingspot (JSON)
+controller -> service: validaCampos()
+service -> repository: existsByPlacaCarro()
+repository -> MySQL: SELECT placa_carro
+MySQL --> repository: false
+service -> repository: save(entity)
+repository -> MySQL: INSERT
+MySQL --> repository: ID gerado
+repository --> service: Entidade salva
+service --> controller: DTO convertido
+controller --> Cliente: 201 Created + Location: /parkingspot/{id}
+@enduml
