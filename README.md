@@ -57,7 +57,7 @@ mvn spring-boot:run
 Acesse a documentação:
 
 http://localhost:8080/parkingspot.html
-🧪 Testando a API
+🧪 Testando a API pelo Postman
 Cadastro de Veículo:
 
 curl -X POST 'http://localhost:8080/parkingspot' \
@@ -105,13 +105,16 @@ sequenceDiagram
     Service-->>Controller: Resposta
     Controller-->>Cliente: 201 Created + JSON
 ```
+### Template criada ✨ HTML5 e CSS3
+
+http://localhost:8080/parking-spots/form 
+(Para acessar no navegador depois de subir a aplicaçao)
+Estou adicionando aos poucos um sistema CRUD do estacionamento.
 
 📌 Melhorias Futuras
 Implementar autenticação JWT
 
 Adicionar relatórios em PDF
-
-Criar frontend em Angular (em estudo)
 
 Deploy em nuvem (AWS/Heroku)
 
